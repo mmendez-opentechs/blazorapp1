@@ -1,0 +1,82 @@
+schemaVersion: 2.2.0
+metadata:
+  name: 'My custom dev env configuration'
+attributes:
+  space:
+    # regular, large, xlarge
+    instanceType: regular
+    # a default IDE for the project
+    editor:
+      # (Required) IDE type: Idea, WebStorm, PyCharm,
+      # RubyMine, CLion, Fleet, GoLand, PhpStorm
+      type: Idea
+      version: '2022.1'
+      # Space uses JetBrains Toolbox App to install IDEs to a dev environment.
+      # updateChannel defines IDE version release stage: Release, EAP
+      updateChannel: EAP
+      # JVM configuration (appends to the default .vmoptions file)
+      vmoptions:
+      - '-Xms2048m'
+      - '-Xmx4096m'
+    # a warm-up snapshot
+    # warmup:
+    #   # create a snapshot every Sunday (only for main branch)
+    #   startOn:
+    #   - type: schedule
+    #     cron: '0 0 0 ? * SUN *'
+    #   # run additional warmup script (IDE indexes will be built anyway)
+    #   script:
+    #     ./scripts/warmup.sh
+    # Parameters and secretes required by a dev environment
+    # e.g., credentials to an external service
+    # requiredParameters:
+    # # (Required) the name of the environment variable
+    # # that will be available in the dev environment
+    # - name: USERNAME
+    #   description: 'Space username'
+    # requiredSecrets:
+    # - name: PASSWORD
+    #   description: 'Space permanent token'
+components:
+- name: dev-container
+  # Dev environment container config
+  container:
+    # use image from a Space Packages registry
+    image: docker.io/kong/kong-gateway:latest
+    # environment variables
+    env:
+    - name: KONG_ADMIN_ACCESS_LOG
+      value: /dev/stdout
+    - name: TERM
+      value: xterm
+    - name: KONG_PROXY_ERROR_LOG
+      value: /dev/stderr
+    - name: KONG_ADMIN_ERROR_LOG
+      value: /dev/stderr
+    - name: KONG_ADMIN_LISTEN
+      value: 0.0.0.0:8001, 0.0.0.0:8444 ssl
+    - name: KONG_DATABASE
+      value: "off"
+    - name: KONG_PROXY_ACCESS_LOG
+      value: /dev/stdout
+    ports:
+    - containerPort: 8000
+      hostPort: 8000
+    - containerPort: 8001
+      hostPort: 8001
+    - containerPort: 8002
+      hostPort: 8002
+    - containerPort: 8003
+      hostPort: 8003
+    - containerPort: 8004
+      hostPort: 8004
+    - containerPort: 8443
+      hostPort: 8443
+    - containerPort: 8444
+      hostPort: 8444
+    - containerPort: 8445
+      hostPort: 8445
+    - containerPort: 8446
+      hostPort: 8446
+    - containerPort: 8447
+      hostPort: 8447
