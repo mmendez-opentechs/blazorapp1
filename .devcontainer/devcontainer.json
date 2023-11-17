@@ -1,0 +1,6 @@
+{
+    "name":"blazor-test",
+    "build": {
+        "dockerfile": "Dockerfile"
+    }
+}
