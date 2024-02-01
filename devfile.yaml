@@ -19,18 +19,18 @@ components:
       cpuRequest: '1'
       mountSources: true
       endpoints:
-          - name: netcore-debug-1
-            attributes:
-              discoverable: false
-              urlRewriteSupported: false
-            targetPort: 7058
-            exposure: public
-            protocol: http
-          - name: netcore-debug-2
-            attributes:
-              discoverable: false
-              urlRewriteSupported: false
-            targetPort: 5123
-            exposure: public
-            protocol: http
+      - name: netcore-debug-1
+        attributes:
+          discoverable: false
+          urlRewriteSupported: false
+        targetPort: 7058
+        exposure: public
+        protocol: http
+      - name: netcore-debug-2
+        attributes:
+          discoverable: false
+          urlRewriteSupported: false
+        targetPort: 5123
+        exposure: public
+        protocol: http
 commands: []
