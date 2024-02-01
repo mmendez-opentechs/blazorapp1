@@ -68,20 +68,6 @@ inline:
             targetPort: 13133
             exposure: public
             protocol: http
-          - name: netcore-debug-1
-            attributes:
-              discoverable: false
-              urlRewriteSupported: false
-            targetPort: 7058
-            exposure: public
-            protocol: http
-          - name: netcore-debug-2
-            attributes:
-              discoverable: false
-              urlRewriteSupported: false
-            targetPort: 5123
-            exposure: public
-            protocol: http
       attributes:
         app.kubernetes.io/component: che-rider-runtime
         app.kubernetes.io/part-of: che-rider.eclipse.org
