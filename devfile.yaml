@@ -20,17 +20,11 @@ components:
       mountSources: true
       endpoints:
       - name: netcore-debug-1
-        attributes:
-          discoverable: false
-          urlRewriteSupported: false
         targetPort: 7058
         exposure: public
-        protocol: http
+        protocol: https
       - name: netcore-debug-2
-        attributes:
-          discoverable: false
-          urlRewriteSupported: false
         targetPort: 5123
         exposure: public
-        protocol: http
+        protocol: https
 commands: []
